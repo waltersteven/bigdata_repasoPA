@@ -119,17 +119,22 @@ object App {
   }
 
   def mayusculas(texto: String): String = {
-    val text = texto.toUpperCase() //da igual el return
-
-    text
+    texto.toUpperCase() //da igual el return
   }
 
   def capitalize(texto: String): String = {
     texto.substring(0,1).toUpperCase + texto.substring(1).toLowerCase //da igual el return
   }
 
-  def formatear(funcion: String => String, nombre: String){
+  def formatear(funcion: String => String, nombre: String){ //la funcion acepta un argumento tipo String y retorna un valor String
     println(funcion(nombre))
+  }
+
+  def unaVezPorSegundo(callback: () => Unit){
+    while(true){
+      callback()
+      Thread sleep 2000
+    }
   }
 
   def main(args : Array[String]) {
@@ -140,7 +145,9 @@ object App {
     //filtrado()
     //demo()
     //operaciones //operaciones()
-    formatear(mayusculas, "walter")
+    //formatear(mayusculas, "walter")
+    unaVezPorSegundo( () => println("Accion por cada 2 segundos"))
+
   }
 
 }
